@@ -47,5 +47,7 @@ def call (String dockerRegistry, String dockerImageTag, String helmChartName, St
                 aws eks --region ap-south-1 update-kubeconfig --name eks-cluster
             """
         }
+    sh 'helm upgrade --install $helmChartName helm/ --set image.repository="$dockerRegistry:$dockerImageTag" '
+}
     
 }
