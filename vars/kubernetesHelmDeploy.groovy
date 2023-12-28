@@ -48,6 +48,6 @@ def call (String dockerRegistry, String dockerImageTag, String helmChartName, St
                 helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx
             """
         }
-    sh 'helm upgrade --install $helmChartName helm/ --set image.repository="$dockerRegistry:$dockerImageTag" '
+    sh "helm upgrade --install $helmChartName helm/ --set image.repository=$dockerRegistry:$dockerImageTag"
     }
     
